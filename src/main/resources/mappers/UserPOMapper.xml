@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.netease.homework.repository.UserPOMapper">
+    <insert id="insertUser" parameterType="UserPO">
+        insert into `user`(username,password,email,seller) values (#{username},#{password},#{email},#{seller})
+    </insert>
+
+    <delete id="deleteUser" parameterType="UserPO">
+        delete from `user` where id=#{id}
+    </delete>
+
+    <update id="UpdateUser" parameterType="UserPO">
+        update `user` set username=#{username},password=#{password},email=#{email},seller=#{seller}
+    </update>
+
+    <select id="selectById" parameterType="String" resultType="UserPO">
+        select * from `user` where id=#{id}
+  </select>
+
+    <select id="selectByName" parameterType="String" resultType="UserPO">
+      select * from `user` where username=#{name}
+  </select>
+    <select id="selectAll" resultType="UserPO">
+        select * from `user`
+    </select>
+
+    <select id="getUserType" parameterType="String" resultType="String">
+        select seller from `user` where username=#{name}
+    </select>
+
+</mapper>

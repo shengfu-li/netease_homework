@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap-theme.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-static-top" th:fragment="header">
+    <div class="container">
+        <div class="navbar-collapse collapse ">
+            <ul class="nav navbar-nav ">
+                <li th:if="${session.username}==null"><a href="/login">游客请[登录]</a></li>
+                <li th:if="${session.username}!=null"><a href="/logout" th:text="${session.username}+'[登出]'"></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/product">首页</a></li>
+                <li th:if="${session.userType}==1"><a href="/publish/add">发布</a></li>
+                <li th:if="${session.userType}==0"><a href="/settle/all">财务</a></li>
+                <li th:if="${session.userType}==0"><a href="/shoppingCart/all">购物车</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

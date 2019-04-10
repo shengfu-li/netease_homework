@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netease.homework.mybatisGenerator.UserPOMapper">
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (username, password, email, 
+      id, seller)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{seller,jdbcType=CHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select username, password, email, id, seller
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (Host, User, Select_priv, 
+      Insert_priv, Update_priv, Delete_priv, 
+      Create_priv, Drop_priv, Reload_priv, 
+      Shutdown_priv, Process_priv, File_priv, 
+      Grant_priv, References_priv, Index_priv, 
+      Alter_priv, Show_db_priv, Super_priv, 
+      Create_tmp_table_priv, Lock_tables_priv, Execute_priv, 
+      Repl_slave_priv, Repl_client_priv, Create_view_priv, 
+      Show_view_priv, Create_routine_priv, Alter_routine_priv, 
+      Create_user_priv, Event_priv, Trigger_priv, 
+      Create_tablespace_priv, ssl_type, max_questions, 
+      max_updates, max_connections, max_user_connections, 
+      plugin, password_expired, password_last_changed, 
+      password_lifetime, account_locked, Create_role_priv, 
+      Drop_role_priv, Password_reuse_history, Password_reuse_time, 
+      ssl_cipher, x509_issuer, x509_subject, 
+      authentication_string)
+    values (#{host,jdbcType=CHAR}, #{user,jdbcType=CHAR}, #{selectPriv,jdbcType=CHAR}, 
+      #{insertPriv,jdbcType=CHAR}, #{updatePriv,jdbcType=CHAR}, #{deletePriv,jdbcType=CHAR}, 
+      #{createPriv,jdbcType=CHAR}, #{dropPriv,jdbcType=CHAR}, #{reloadPriv,jdbcType=CHAR}, 
+      #{shutdownPriv,jdbcType=CHAR}, #{processPriv,jdbcType=CHAR}, #{filePriv,jdbcType=CHAR}, 
+      #{grantPriv,jdbcType=CHAR}, #{referencesPriv,jdbcType=CHAR}, #{indexPriv,jdbcType=CHAR}, 
+      #{alterPriv,jdbcType=CHAR}, #{showDbPriv,jdbcType=CHAR}, #{superPriv,jdbcType=CHAR}, 
+      #{createTmpTablePriv,jdbcType=CHAR}, #{lockTablesPriv,jdbcType=CHAR}, #{executePriv,jdbcType=CHAR}, 
+      #{replSlavePriv,jdbcType=CHAR}, #{replClientPriv,jdbcType=CHAR}, #{createViewPriv,jdbcType=CHAR}, 
+      #{showViewPriv,jdbcType=CHAR}, #{createRoutinePriv,jdbcType=CHAR}, #{alterRoutinePriv,jdbcType=CHAR}, 
+      #{createUserPriv,jdbcType=CHAR}, #{eventPriv,jdbcType=CHAR}, #{triggerPriv,jdbcType=CHAR}, 
+      #{createTablespacePriv,jdbcType=CHAR}, #{sslType,jdbcType=CHAR}, #{maxQuestions,jdbcType=INTEGER}, 
+      #{maxUpdates,jdbcType=INTEGER}, #{maxConnections,jdbcType=INTEGER}, #{maxUserConnections,jdbcType=INTEGER}, 
+      #{plugin,jdbcType=CHAR}, #{passwordExpired,jdbcType=CHAR}, #{passwordLastChanged,jdbcType=TIMESTAMP}, 
+      #{passwordLifetime,jdbcType=SMALLINT}, #{accountLocked,jdbcType=CHAR}, #{createRolePriv,jdbcType=CHAR}, 
+      #{dropRolePriv,jdbcType=CHAR}, #{passwordReuseHistory,jdbcType=SMALLINT}, #{passwordReuseTime,jdbcType=SMALLINT}, 
+      #{sslCipher,jdbcType=LONGVARBINARY}, #{x509Issuer,jdbcType=LONGVARBINARY}, #{x509Subject,jdbcType=LONGVARBINARY}, 
+      #{authenticationString,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, 
+    Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv, References_priv, 
+    Index_priv, Alter_priv, Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv, 
+    Execute_priv, Repl_slave_priv, Repl_client_priv, Create_view_priv, Show_view_priv, 
+    Create_routine_priv, Alter_routine_priv, Create_user_priv, Event_priv, Trigger_priv, 
+    Create_tablespace_priv, ssl_type, max_questions, max_updates, max_connections, max_user_connections, 
+    plugin, password_expired, password_last_changed, password_lifetime, account_locked, 
+    Create_role_priv, Drop_role_priv, Password_reuse_history, Password_reuse_time, ssl_cipher, 
+    x509_issuer, x509_subject, authentication_string
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (id, name, age
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, age
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (username, password, email, 
+      id, seller)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{seller,jdbcType=CHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select username, password, email, id, seller
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (Host, User, Select_priv, 
+      Insert_priv, Update_priv, Delete_priv, 
+      Create_priv, Drop_priv, Reload_priv, 
+      Shutdown_priv, Process_priv, File_priv, 
+      Grant_priv, References_priv, Index_priv, 
+      Alter_priv, Show_db_priv, Super_priv, 
+      Create_tmp_table_priv, Lock_tables_priv, Execute_priv, 
+      Repl_slave_priv, Repl_client_priv, Create_view_priv, 
+      Show_view_priv, Create_routine_priv, Alter_routine_priv, 
+      Create_user_priv, Event_priv, Trigger_priv, 
+      Create_tablespace_priv, ssl_type, max_questions, 
+      max_updates, max_connections, max_user_connections, 
+      plugin, password_expired, password_last_changed, 
+      password_lifetime, account_locked, Create_role_priv, 
+      Drop_role_priv, Password_reuse_history, Password_reuse_time, 
+      ssl_cipher, x509_issuer, x509_subject, 
+      authentication_string)
+    values (#{host,jdbcType=CHAR}, #{user,jdbcType=CHAR}, #{selectPriv,jdbcType=CHAR}, 
+      #{insertPriv,jdbcType=CHAR}, #{updatePriv,jdbcType=CHAR}, #{deletePriv,jdbcType=CHAR}, 
+      #{createPriv,jdbcType=CHAR}, #{dropPriv,jdbcType=CHAR}, #{reloadPriv,jdbcType=CHAR}, 
+      #{shutdownPriv,jdbcType=CHAR}, #{processPriv,jdbcType=CHAR}, #{filePriv,jdbcType=CHAR}, 
+      #{grantPriv,jdbcType=CHAR}, #{referencesPriv,jdbcType=CHAR}, #{indexPriv,jdbcType=CHAR}, 
+      #{alterPriv,jdbcType=CHAR}, #{showDbPriv,jdbcType=CHAR}, #{superPriv,jdbcType=CHAR}, 
+      #{createTmpTablePriv,jdbcType=CHAR}, #{lockTablesPriv,jdbcType=CHAR}, #{executePriv,jdbcType=CHAR}, 
+      #{replSlavePriv,jdbcType=CHAR}, #{replClientPriv,jdbcType=CHAR}, #{createViewPriv,jdbcType=CHAR}, 
+      #{showViewPriv,jdbcType=CHAR}, #{createRoutinePriv,jdbcType=CHAR}, #{alterRoutinePriv,jdbcType=CHAR}, 
+      #{createUserPriv,jdbcType=CHAR}, #{eventPriv,jdbcType=CHAR}, #{triggerPriv,jdbcType=CHAR}, 
+      #{createTablespacePriv,jdbcType=CHAR}, #{sslType,jdbcType=CHAR}, #{maxQuestions,jdbcType=INTEGER}, 
+      #{maxUpdates,jdbcType=INTEGER}, #{maxConnections,jdbcType=INTEGER}, #{maxUserConnections,jdbcType=INTEGER}, 
+      #{plugin,jdbcType=CHAR}, #{passwordExpired,jdbcType=CHAR}, #{passwordLastChanged,jdbcType=TIMESTAMP}, 
+      #{passwordLifetime,jdbcType=SMALLINT}, #{accountLocked,jdbcType=CHAR}, #{createRolePriv,jdbcType=CHAR}, 
+      #{dropRolePriv,jdbcType=CHAR}, #{passwordReuseHistory,jdbcType=SMALLINT}, #{passwordReuseTime,jdbcType=SMALLINT}, 
+      #{sslCipher,jdbcType=LONGVARBINARY}, #{x509Issuer,jdbcType=LONGVARBINARY}, #{x509Subject,jdbcType=LONGVARBINARY}, 
+      #{authenticationString,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, 
+    Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv, References_priv, 
+    Index_priv, Alter_priv, Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv, 
+    Execute_priv, Repl_slave_priv, Repl_client_priv, Create_view_priv, Show_view_priv, 
+    Create_routine_priv, Alter_routine_priv, Create_user_priv, Event_priv, Trigger_priv, 
+    Create_tablespace_priv, ssl_type, max_questions, max_updates, max_connections, max_user_connections, 
+    plugin, password_expired, password_last_changed, password_lifetime, account_locked, 
+    Create_role_priv, Drop_role_priv, Password_reuse_history, Password_reuse_time, ssl_cipher, 
+    x509_issuer, x509_subject, authentication_string
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (id, name, age
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, age
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (username, password, email, 
+      id, seller)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{seller,jdbcType=CHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select username, password, email, id, seller
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (Host, User, Select_priv, 
+      Insert_priv, Update_priv, Delete_priv, 
+      Create_priv, Drop_priv, Reload_priv, 
+      Shutdown_priv, Process_priv, File_priv, 
+      Grant_priv, References_priv, Index_priv, 
+      Alter_priv, Show_db_priv, Super_priv, 
+      Create_tmp_table_priv, Lock_tables_priv, Execute_priv, 
+      Repl_slave_priv, Repl_client_priv, Create_view_priv, 
+      Show_view_priv, Create_routine_priv, Alter_routine_priv, 
+      Create_user_priv, Event_priv, Trigger_priv, 
+      Create_tablespace_priv, ssl_type, max_questions, 
+      max_updates, max_connections, max_user_connections, 
+      plugin, password_expired, password_last_changed, 
+      password_lifetime, account_locked, Create_role_priv, 
+      Drop_role_priv, Password_reuse_history, Password_reuse_time, 
+      ssl_cipher, x509_issuer, x509_subject, 
+      authentication_string)
+    values (#{host,jdbcType=CHAR}, #{user,jdbcType=CHAR}, #{selectPriv,jdbcType=CHAR}, 
+      #{insertPriv,jdbcType=CHAR}, #{updatePriv,jdbcType=CHAR}, #{deletePriv,jdbcType=CHAR}, 
+      #{createPriv,jdbcType=CHAR}, #{dropPriv,jdbcType=CHAR}, #{reloadPriv,jdbcType=CHAR}, 
+      #{shutdownPriv,jdbcType=CHAR}, #{processPriv,jdbcType=CHAR}, #{filePriv,jdbcType=CHAR}, 
+      #{grantPriv,jdbcType=CHAR}, #{referencesPriv,jdbcType=CHAR}, #{indexPriv,jdbcType=CHAR}, 
+      #{alterPriv,jdbcType=CHAR}, #{showDbPriv,jdbcType=CHAR}, #{superPriv,jdbcType=CHAR}, 
+      #{createTmpTablePriv,jdbcType=CHAR}, #{lockTablesPriv,jdbcType=CHAR}, #{executePriv,jdbcType=CHAR}, 
+      #{replSlavePriv,jdbcType=CHAR}, #{replClientPriv,jdbcType=CHAR}, #{createViewPriv,jdbcType=CHAR}, 
+      #{showViewPriv,jdbcType=CHAR}, #{createRoutinePriv,jdbcType=CHAR}, #{alterRoutinePriv,jdbcType=CHAR}, 
+      #{createUserPriv,jdbcType=CHAR}, #{eventPriv,jdbcType=CHAR}, #{triggerPriv,jdbcType=CHAR}, 
+      #{createTablespacePriv,jdbcType=CHAR}, #{sslType,jdbcType=CHAR}, #{maxQuestions,jdbcType=INTEGER}, 
+      #{maxUpdates,jdbcType=INTEGER}, #{maxConnections,jdbcType=INTEGER}, #{maxUserConnections,jdbcType=INTEGER}, 
+      #{plugin,jdbcType=CHAR}, #{passwordExpired,jdbcType=CHAR}, #{passwordLastChanged,jdbcType=TIMESTAMP}, 
+      #{passwordLifetime,jdbcType=SMALLINT}, #{accountLocked,jdbcType=CHAR}, #{createRolePriv,jdbcType=CHAR}, 
+      #{dropRolePriv,jdbcType=CHAR}, #{passwordReuseHistory,jdbcType=SMALLINT}, #{passwordReuseTime,jdbcType=SMALLINT}, 
+      #{sslCipher,jdbcType=LONGVARBINARY}, #{x509Issuer,jdbcType=LONGVARBINARY}, #{x509Subject,jdbcType=LONGVARBINARY}, 
+      #{authenticationString,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, 
+    Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv, References_priv, 
+    Index_priv, Alter_priv, Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv, 
+    Execute_priv, Repl_slave_priv, Repl_client_priv, Create_view_priv, Show_view_priv, 
+    Create_routine_priv, Alter_routine_priv, Create_user_priv, Event_priv, Trigger_priv, 
+    Create_tablespace_priv, ssl_type, max_questions, max_updates, max_connections, max_user_connections, 
+    plugin, password_expired, password_last_changed, password_lifetime, account_locked, 
+    Create_role_priv, Drop_role_priv, Password_reuse_history, Password_reuse_time, ssl_cipher, 
+    x509_issuer, x509_subject, authentication_string
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (id, name, age
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, age
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (username, password, email, 
+      id, seller)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{seller,jdbcType=CHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select username, password, email, id, seller
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (Host, User, Select_priv, 
+      Insert_priv, Update_priv, Delete_priv, 
+      Create_priv, Drop_priv, Reload_priv, 
+      Shutdown_priv, Process_priv, File_priv, 
+      Grant_priv, References_priv, Index_priv, 
+      Alter_priv, Show_db_priv, Super_priv, 
+      Create_tmp_table_priv, Lock_tables_priv, Execute_priv, 
+      Repl_slave_priv, Repl_client_priv, Create_view_priv, 
+      Show_view_priv, Create_routine_priv, Alter_routine_priv, 
+      Create_user_priv, Event_priv, Trigger_priv, 
+      Create_tablespace_priv, ssl_type, max_questions, 
+      max_updates, max_connections, max_user_connections, 
+      plugin, password_expired, password_last_changed, 
+      password_lifetime, account_locked, Create_role_priv, 
+      Drop_role_priv, Password_reuse_history, Password_reuse_time, 
+      ssl_cipher, x509_issuer, x509_subject, 
+      authentication_string)
+    values (#{host,jdbcType=CHAR}, #{user,jdbcType=CHAR}, #{selectPriv,jdbcType=CHAR}, 
+      #{insertPriv,jdbcType=CHAR}, #{updatePriv,jdbcType=CHAR}, #{deletePriv,jdbcType=CHAR}, 
+      #{createPriv,jdbcType=CHAR}, #{dropPriv,jdbcType=CHAR}, #{reloadPriv,jdbcType=CHAR}, 
+      #{shutdownPriv,jdbcType=CHAR}, #{processPriv,jdbcType=CHAR}, #{filePriv,jdbcType=CHAR}, 
+      #{grantPriv,jdbcType=CHAR}, #{referencesPriv,jdbcType=CHAR}, #{indexPriv,jdbcType=CHAR}, 
+      #{alterPriv,jdbcType=CHAR}, #{showDbPriv,jdbcType=CHAR}, #{superPriv,jdbcType=CHAR}, 
+      #{createTmpTablePriv,jdbcType=CHAR}, #{lockTablesPriv,jdbcType=CHAR}, #{executePriv,jdbcType=CHAR}, 
+      #{replSlavePriv,jdbcType=CHAR}, #{replClientPriv,jdbcType=CHAR}, #{createViewPriv,jdbcType=CHAR}, 
+      #{showViewPriv,jdbcType=CHAR}, #{createRoutinePriv,jdbcType=CHAR}, #{alterRoutinePriv,jdbcType=CHAR}, 
+      #{createUserPriv,jdbcType=CHAR}, #{eventPriv,jdbcType=CHAR}, #{triggerPriv,jdbcType=CHAR}, 
+      #{createTablespacePriv,jdbcType=CHAR}, #{sslType,jdbcType=CHAR}, #{maxQuestions,jdbcType=INTEGER}, 
+      #{maxUpdates,jdbcType=INTEGER}, #{maxConnections,jdbcType=INTEGER}, #{maxUserConnections,jdbcType=INTEGER}, 
+      #{plugin,jdbcType=CHAR}, #{passwordExpired,jdbcType=CHAR}, #{passwordLastChanged,jdbcType=TIMESTAMP}, 
+      #{passwordLifetime,jdbcType=SMALLINT}, #{accountLocked,jdbcType=CHAR}, #{createRolePriv,jdbcType=CHAR}, 
+      #{dropRolePriv,jdbcType=CHAR}, #{passwordReuseHistory,jdbcType=SMALLINT}, #{passwordReuseTime,jdbcType=SMALLINT}, 
+      #{sslCipher,jdbcType=LONGVARBINARY}, #{x509Issuer,jdbcType=LONGVARBINARY}, #{x509Subject,jdbcType=LONGVARBINARY}, 
+      #{authenticationString,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, 
+    Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv, References_priv, 
+    Index_priv, Alter_priv, Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv, 
+    Execute_priv, Repl_slave_priv, Repl_client_priv, Create_view_priv, Show_view_priv, 
+    Create_routine_priv, Alter_routine_priv, Create_user_priv, Event_priv, Trigger_priv, 
+    Create_tablespace_priv, ssl_type, max_questions, max_updates, max_connections, max_user_connections, 
+    plugin, password_expired, password_last_changed, password_lifetime, account_locked, 
+    Create_role_priv, Drop_role_priv, Password_reuse_history, Password_reuse_time, ssl_cipher, 
+    x509_issuer, x509_subject, authentication_string
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (id, name, age
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, age
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (username, password, email, 
+      id, seller)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{seller,jdbcType=CHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select username, password, email, id, seller
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (Host, User, Select_priv, 
+      Insert_priv, Update_priv, Delete_priv, 
+      Create_priv, Drop_priv, Reload_priv, 
+      Shutdown_priv, Process_priv, File_priv, 
+      Grant_priv, References_priv, Index_priv, 
+      Alter_priv, Show_db_priv, Super_priv, 
+      Create_tmp_table_priv, Lock_tables_priv, Execute_priv, 
+      Repl_slave_priv, Repl_client_priv, Create_view_priv, 
+      Show_view_priv, Create_routine_priv, Alter_routine_priv, 
+      Create_user_priv, Event_priv, Trigger_priv, 
+      Create_tablespace_priv, ssl_type, max_questions, 
+      max_updates, max_connections, max_user_connections, 
+      plugin, password_expired, password_last_changed, 
+      password_lifetime, account_locked, Create_role_priv, 
+      Drop_role_priv, Password_reuse_history, Password_reuse_time, 
+      ssl_cipher, x509_issuer, x509_subject, 
+      authentication_string)
+    values (#{host,jdbcType=CHAR}, #{user,jdbcType=CHAR}, #{selectPriv,jdbcType=CHAR}, 
+      #{insertPriv,jdbcType=CHAR}, #{updatePriv,jdbcType=CHAR}, #{deletePriv,jdbcType=CHAR}, 
+      #{createPriv,jdbcType=CHAR}, #{dropPriv,jdbcType=CHAR}, #{reloadPriv,jdbcType=CHAR}, 
+      #{shutdownPriv,jdbcType=CHAR}, #{processPriv,jdbcType=CHAR}, #{filePriv,jdbcType=CHAR}, 
+      #{grantPriv,jdbcType=CHAR}, #{referencesPriv,jdbcType=CHAR}, #{indexPriv,jdbcType=CHAR}, 
+      #{alterPriv,jdbcType=CHAR}, #{showDbPriv,jdbcType=CHAR}, #{superPriv,jdbcType=CHAR}, 
+      #{createTmpTablePriv,jdbcType=CHAR}, #{lockTablesPriv,jdbcType=CHAR}, #{executePriv,jdbcType=CHAR}, 
+      #{replSlavePriv,jdbcType=CHAR}, #{replClientPriv,jdbcType=CHAR}, #{createViewPriv,jdbcType=CHAR}, 
+      #{showViewPriv,jdbcType=CHAR}, #{createRoutinePriv,jdbcType=CHAR}, #{alterRoutinePriv,jdbcType=CHAR}, 
+      #{createUserPriv,jdbcType=CHAR}, #{eventPriv,jdbcType=CHAR}, #{triggerPriv,jdbcType=CHAR}, 
+      #{createTablespacePriv,jdbcType=CHAR}, #{sslType,jdbcType=CHAR}, #{maxQuestions,jdbcType=INTEGER}, 
+      #{maxUpdates,jdbcType=INTEGER}, #{maxConnections,jdbcType=INTEGER}, #{maxUserConnections,jdbcType=INTEGER}, 
+      #{plugin,jdbcType=CHAR}, #{passwordExpired,jdbcType=CHAR}, #{passwordLastChanged,jdbcType=TIMESTAMP}, 
+      #{passwordLifetime,jdbcType=SMALLINT}, #{accountLocked,jdbcType=CHAR}, #{createRolePriv,jdbcType=CHAR}, 
+      #{dropRolePriv,jdbcType=CHAR}, #{passwordReuseHistory,jdbcType=SMALLINT}, #{passwordReuseTime,jdbcType=SMALLINT}, 
+      #{sslCipher,jdbcType=LONGVARBINARY}, #{x509Issuer,jdbcType=LONGVARBINARY}, #{x509Subject,jdbcType=LONGVARBINARY}, 
+      #{authenticationString,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, 
+    Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv, References_priv, 
+    Index_priv, Alter_priv, Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv, 
+    Execute_priv, Repl_slave_priv, Repl_client_priv, Create_view_priv, Show_view_priv, 
+    Create_routine_priv, Alter_routine_priv, Create_user_priv, Event_priv, Trigger_priv, 
+    Create_tablespace_priv, ssl_type, max_questions, max_updates, max_connections, max_user_connections, 
+    plugin, password_expired, password_last_changed, password_lifetime, account_locked, 
+    Create_role_priv, Drop_role_priv, Password_reuse_history, Password_reuse_time, ssl_cipher, 
+    x509_issuer, x509_subject, authentication_string
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (id, name, age
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, age
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (username, password, email, 
+      id, seller)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{seller,jdbcType=CHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select username, password, email, id, seller
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (Host, User, Select_priv, 
+      Insert_priv, Update_priv, Delete_priv, 
+      Create_priv, Drop_priv, Reload_priv, 
+      Shutdown_priv, Process_priv, File_priv, 
+      Grant_priv, References_priv, Index_priv, 
+      Alter_priv, Show_db_priv, Super_priv, 
+      Create_tmp_table_priv, Lock_tables_priv, Execute_priv, 
+      Repl_slave_priv, Repl_client_priv, Create_view_priv, 
+      Show_view_priv, Create_routine_priv, Alter_routine_priv, 
+      Create_user_priv, Event_priv, Trigger_priv, 
+      Create_tablespace_priv, ssl_type, max_questions, 
+      max_updates, max_connections, max_user_connections, 
+      plugin, password_expired, password_last_changed, 
+      password_lifetime, account_locked, Create_role_priv, 
+      Drop_role_priv, Password_reuse_history, Password_reuse_time, 
+      ssl_cipher, x509_issuer, x509_subject, 
+      authentication_string)
+    values (#{host,jdbcType=CHAR}, #{user,jdbcType=CHAR}, #{selectPriv,jdbcType=CHAR}, 
+      #{insertPriv,jdbcType=CHAR}, #{updatePriv,jdbcType=CHAR}, #{deletePriv,jdbcType=CHAR}, 
+      #{createPriv,jdbcType=CHAR}, #{dropPriv,jdbcType=CHAR}, #{reloadPriv,jdbcType=CHAR}, 
+      #{shutdownPriv,jdbcType=CHAR}, #{processPriv,jdbcType=CHAR}, #{filePriv,jdbcType=CHAR}, 
+      #{grantPriv,jdbcType=CHAR}, #{referencesPriv,jdbcType=CHAR}, #{indexPriv,jdbcType=CHAR}, 
+      #{alterPriv,jdbcType=CHAR}, #{showDbPriv,jdbcType=CHAR}, #{superPriv,jdbcType=CHAR}, 
+      #{createTmpTablePriv,jdbcType=CHAR}, #{lockTablesPriv,jdbcType=CHAR}, #{executePriv,jdbcType=CHAR}, 
+      #{replSlavePriv,jdbcType=CHAR}, #{replClientPriv,jdbcType=CHAR}, #{createViewPriv,jdbcType=CHAR}, 
+      #{showViewPriv,jdbcType=CHAR}, #{createRoutinePriv,jdbcType=CHAR}, #{alterRoutinePriv,jdbcType=CHAR}, 
+      #{createUserPriv,jdbcType=CHAR}, #{eventPriv,jdbcType=CHAR}, #{triggerPriv,jdbcType=CHAR}, 
+      #{createTablespacePriv,jdbcType=CHAR}, #{sslType,jdbcType=CHAR}, #{maxQuestions,jdbcType=INTEGER}, 
+      #{maxUpdates,jdbcType=INTEGER}, #{maxConnections,jdbcType=INTEGER}, #{maxUserConnections,jdbcType=INTEGER}, 
+      #{plugin,jdbcType=CHAR}, #{passwordExpired,jdbcType=CHAR}, #{passwordLastChanged,jdbcType=TIMESTAMP}, 
+      #{passwordLifetime,jdbcType=SMALLINT}, #{accountLocked,jdbcType=CHAR}, #{createRolePriv,jdbcType=CHAR}, 
+      #{dropRolePriv,jdbcType=CHAR}, #{passwordReuseHistory,jdbcType=SMALLINT}, #{passwordReuseTime,jdbcType=SMALLINT}, 
+      #{sslCipher,jdbcType=LONGVARBINARY}, #{x509Issuer,jdbcType=LONGVARBINARY}, #{x509Subject,jdbcType=LONGVARBINARY}, 
+      #{authenticationString,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, 
+    Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv, References_priv, 
+    Index_priv, Alter_priv, Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv, 
+    Execute_priv, Repl_slave_priv, Repl_client_priv, Create_view_priv, Show_view_priv, 
+    Create_routine_priv, Alter_routine_priv, Create_user_priv, Event_priv, Trigger_priv, 
+    Create_tablespace_priv, ssl_type, max_questions, max_updates, max_connections, max_user_connections, 
+    plugin, password_expired, password_last_changed, password_lifetime, account_locked, 
+    Create_role_priv, Drop_role_priv, Password_reuse_history, Password_reuse_time, ssl_cipher, 
+    x509_issuer, x509_subject, authentication_string
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (id, name, age
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, age
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (username, password, email, 
+      id, seller)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{seller,jdbcType=CHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select username, password, email, id, seller
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (Host, User, Select_priv, 
+      Insert_priv, Update_priv, Delete_priv, 
+      Create_priv, Drop_priv, Reload_priv, 
+      Shutdown_priv, Process_priv, File_priv, 
+      Grant_priv, References_priv, Index_priv, 
+      Alter_priv, Show_db_priv, Super_priv, 
+      Create_tmp_table_priv, Lock_tables_priv, Execute_priv, 
+      Repl_slave_priv, Repl_client_priv, Create_view_priv, 
+      Show_view_priv, Create_routine_priv, Alter_routine_priv, 
+      Create_user_priv, Event_priv, Trigger_priv, 
+      Create_tablespace_priv, ssl_type, max_questions, 
+      max_updates, max_connections, max_user_connections, 
+      plugin, password_expired, password_last_changed, 
+      password_lifetime, account_locked, Create_role_priv, 
+      Drop_role_priv, Password_reuse_history, Password_reuse_time, 
+      ssl_cipher, x509_issuer, x509_subject, 
+      authentication_string)
+    values (#{host,jdbcType=CHAR}, #{user,jdbcType=CHAR}, #{selectPriv,jdbcType=CHAR}, 
+      #{insertPriv,jdbcType=CHAR}, #{updatePriv,jdbcType=CHAR}, #{deletePriv,jdbcType=CHAR}, 
+      #{createPriv,jdbcType=CHAR}, #{dropPriv,jdbcType=CHAR}, #{reloadPriv,jdbcType=CHAR}, 
+      #{shutdownPriv,jdbcType=CHAR}, #{processPriv,jdbcType=CHAR}, #{filePriv,jdbcType=CHAR}, 
+      #{grantPriv,jdbcType=CHAR}, #{referencesPriv,jdbcType=CHAR}, #{indexPriv,jdbcType=CHAR}, 
+      #{alterPriv,jdbcType=CHAR}, #{showDbPriv,jdbcType=CHAR}, #{superPriv,jdbcType=CHAR}, 
+      #{createTmpTablePriv,jdbcType=CHAR}, #{lockTablesPriv,jdbcType=CHAR}, #{executePriv,jdbcType=CHAR}, 
+      #{replSlavePriv,jdbcType=CHAR}, #{replClientPriv,jdbcType=CHAR}, #{createViewPriv,jdbcType=CHAR}, 
+      #{showViewPriv,jdbcType=CHAR}, #{createRoutinePriv,jdbcType=CHAR}, #{alterRoutinePriv,jdbcType=CHAR}, 
+      #{createUserPriv,jdbcType=CHAR}, #{eventPriv,jdbcType=CHAR}, #{triggerPriv,jdbcType=CHAR}, 
+      #{createTablespacePriv,jdbcType=CHAR}, #{sslType,jdbcType=CHAR}, #{maxQuestions,jdbcType=INTEGER}, 
+      #{maxUpdates,jdbcType=INTEGER}, #{maxConnections,jdbcType=INTEGER}, #{maxUserConnections,jdbcType=INTEGER}, 
+      #{plugin,jdbcType=CHAR}, #{passwordExpired,jdbcType=CHAR}, #{passwordLastChanged,jdbcType=TIMESTAMP}, 
+      #{passwordLifetime,jdbcType=SMALLINT}, #{accountLocked,jdbcType=CHAR}, #{createRolePriv,jdbcType=CHAR}, 
+      #{dropRolePriv,jdbcType=CHAR}, #{passwordReuseHistory,jdbcType=SMALLINT}, #{passwordReuseTime,jdbcType=SMALLINT}, 
+      #{sslCipher,jdbcType=LONGVARBINARY}, #{x509Issuer,jdbcType=LONGVARBINARY}, #{x509Subject,jdbcType=LONGVARBINARY}, 
+      #{authenticationString,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, 
+    Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv, References_priv, 
+    Index_priv, Alter_priv, Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv, 
+    Execute_priv, Repl_slave_priv, Repl_client_priv, Create_view_priv, Show_view_priv, 
+    Create_routine_priv, Alter_routine_priv, Create_user_priv, Event_priv, Trigger_priv, 
+    Create_tablespace_priv, ssl_type, max_questions, max_updates, max_connections, max_user_connections, 
+    plugin, password_expired, password_last_changed, password_lifetime, account_locked, 
+    Create_role_priv, Drop_role_priv, Password_reuse_history, Password_reuse_time, ssl_cipher, 
+    x509_issuer, x509_subject, authentication_string
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (id, name, age
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, age
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (username, password, email, 
+      id, seller)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{seller,jdbcType=CHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select username, password, email, id, seller
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (Host, User, Select_priv, 
+      Insert_priv, Update_priv, Delete_priv, 
+      Create_priv, Drop_priv, Reload_priv, 
+      Shutdown_priv, Process_priv, File_priv, 
+      Grant_priv, References_priv, Index_priv, 
+      Alter_priv, Show_db_priv, Super_priv, 
+      Create_tmp_table_priv, Lock_tables_priv, Execute_priv, 
+      Repl_slave_priv, Repl_client_priv, Create_view_priv, 
+      Show_view_priv, Create_routine_priv, Alter_routine_priv, 
+      Create_user_priv, Event_priv, Trigger_priv, 
+      Create_tablespace_priv, ssl_type, max_questions, 
+      max_updates, max_connections, max_user_connections, 
+      plugin, password_expired, password_last_changed, 
+      password_lifetime, account_locked, Create_role_priv, 
+      Drop_role_priv, Password_reuse_history, Password_reuse_time, 
+      ssl_cipher, x509_issuer, x509_subject, 
+      authentication_string)
+    values (#{host,jdbcType=CHAR}, #{user,jdbcType=CHAR}, #{selectPriv,jdbcType=CHAR}, 
+      #{insertPriv,jdbcType=CHAR}, #{updatePriv,jdbcType=CHAR}, #{deletePriv,jdbcType=CHAR}, 
+      #{createPriv,jdbcType=CHAR}, #{dropPriv,jdbcType=CHAR}, #{reloadPriv,jdbcType=CHAR}, 
+      #{shutdownPriv,jdbcType=CHAR}, #{processPriv,jdbcType=CHAR}, #{filePriv,jdbcType=CHAR}, 
+      #{grantPriv,jdbcType=CHAR}, #{referencesPriv,jdbcType=CHAR}, #{indexPriv,jdbcType=CHAR}, 
+      #{alterPriv,jdbcType=CHAR}, #{showDbPriv,jdbcType=CHAR}, #{superPriv,jdbcType=CHAR}, 
+      #{createTmpTablePriv,jdbcType=CHAR}, #{lockTablesPriv,jdbcType=CHAR}, #{executePriv,jdbcType=CHAR}, 
+      #{replSlavePriv,jdbcType=CHAR}, #{replClientPriv,jdbcType=CHAR}, #{createViewPriv,jdbcType=CHAR}, 
+      #{showViewPriv,jdbcType=CHAR}, #{createRoutinePriv,jdbcType=CHAR}, #{alterRoutinePriv,jdbcType=CHAR}, 
+      #{createUserPriv,jdbcType=CHAR}, #{eventPriv,jdbcType=CHAR}, #{triggerPriv,jdbcType=CHAR}, 
+      #{createTablespacePriv,jdbcType=CHAR}, #{sslType,jdbcType=CHAR}, #{maxQuestions,jdbcType=INTEGER}, 
+      #{maxUpdates,jdbcType=INTEGER}, #{maxConnections,jdbcType=INTEGER}, #{maxUserConnections,jdbcType=INTEGER}, 
+      #{plugin,jdbcType=CHAR}, #{passwordExpired,jdbcType=CHAR}, #{passwordLastChanged,jdbcType=TIMESTAMP}, 
+      #{passwordLifetime,jdbcType=SMALLINT}, #{accountLocked,jdbcType=CHAR}, #{createRolePriv,jdbcType=CHAR}, 
+      #{dropRolePriv,jdbcType=CHAR}, #{passwordReuseHistory,jdbcType=SMALLINT}, #{passwordReuseTime,jdbcType=SMALLINT}, 
+      #{sslCipher,jdbcType=LONGVARBINARY}, #{x509Issuer,jdbcType=LONGVARBINARY}, #{x509Subject,jdbcType=LONGVARBINARY}, 
+      #{authenticationString,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, 
+    Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv, References_priv, 
+    Index_priv, Alter_priv, Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv, 
+    Execute_priv, Repl_slave_priv, Repl_client_priv, Create_view_priv, Show_view_priv, 
+    Create_routine_priv, Alter_routine_priv, Create_user_priv, Event_priv, Trigger_priv, 
+    Create_tablespace_priv, ssl_type, max_questions, max_updates, max_connections, max_user_connections, 
+    plugin, password_expired, password_last_changed, password_lifetime, account_locked, 
+    Create_role_priv, Drop_role_priv, Password_reuse_history, Password_reuse_time, ssl_cipher, 
+    x509_issuer, x509_subject, authentication_string
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (id, name, age
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, age
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (username, password, email, 
+      id, seller)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{seller,jdbcType=CHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select username, password, email, id, seller
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (Host, User, Select_priv, 
+      Insert_priv, Update_priv, Delete_priv, 
+      Create_priv, Drop_priv, Reload_priv, 
+      Shutdown_priv, Process_priv, File_priv, 
+      Grant_priv, References_priv, Index_priv, 
+      Alter_priv, Show_db_priv, Super_priv, 
+      Create_tmp_table_priv, Lock_tables_priv, Execute_priv, 
+      Repl_slave_priv, Repl_client_priv, Create_view_priv, 
+      Show_view_priv, Create_routine_priv, Alter_routine_priv, 
+      Create_user_priv, Event_priv, Trigger_priv, 
+      Create_tablespace_priv, ssl_type, max_questions, 
+      max_updates, max_connections, max_user_connections, 
+      plugin, password_expired, password_last_changed, 
+      password_lifetime, account_locked, Create_role_priv, 
+      Drop_role_priv, Password_reuse_history, Password_reuse_time, 
+      ssl_cipher, x509_issuer, x509_subject, 
+      authentication_string)
+    values (#{host,jdbcType=CHAR}, #{user,jdbcType=CHAR}, #{selectPriv,jdbcType=CHAR}, 
+      #{insertPriv,jdbcType=CHAR}, #{updatePriv,jdbcType=CHAR}, #{deletePriv,jdbcType=CHAR}, 
+      #{createPriv,jdbcType=CHAR}, #{dropPriv,jdbcType=CHAR}, #{reloadPriv,jdbcType=CHAR}, 
+      #{shutdownPriv,jdbcType=CHAR}, #{processPriv,jdbcType=CHAR}, #{filePriv,jdbcType=CHAR}, 
+      #{grantPriv,jdbcType=CHAR}, #{referencesPriv,jdbcType=CHAR}, #{indexPriv,jdbcType=CHAR}, 
+      #{alterPriv,jdbcType=CHAR}, #{showDbPriv,jdbcType=CHAR}, #{superPriv,jdbcType=CHAR}, 
+      #{createTmpTablePriv,jdbcType=CHAR}, #{lockTablesPriv,jdbcType=CHAR}, #{executePriv,jdbcType=CHAR}, 
+      #{replSlavePriv,jdbcType=CHAR}, #{replClientPriv,jdbcType=CHAR}, #{createViewPriv,jdbcType=CHAR}, 
+      #{showViewPriv,jdbcType=CHAR}, #{createRoutinePriv,jdbcType=CHAR}, #{alterRoutinePriv,jdbcType=CHAR}, 
+      #{createUserPriv,jdbcType=CHAR}, #{eventPriv,jdbcType=CHAR}, #{triggerPriv,jdbcType=CHAR}, 
+      #{createTablespacePriv,jdbcType=CHAR}, #{sslType,jdbcType=CHAR}, #{maxQuestions,jdbcType=INTEGER}, 
+      #{maxUpdates,jdbcType=INTEGER}, #{maxConnections,jdbcType=INTEGER}, #{maxUserConnections,jdbcType=INTEGER}, 
+      #{plugin,jdbcType=CHAR}, #{passwordExpired,jdbcType=CHAR}, #{passwordLastChanged,jdbcType=TIMESTAMP}, 
+      #{passwordLifetime,jdbcType=SMALLINT}, #{accountLocked,jdbcType=CHAR}, #{createRolePriv,jdbcType=CHAR}, 
+      #{dropRolePriv,jdbcType=CHAR}, #{passwordReuseHistory,jdbcType=SMALLINT}, #{passwordReuseTime,jdbcType=SMALLINT}, 
+      #{sslCipher,jdbcType=LONGVARBINARY}, #{x509Issuer,jdbcType=LONGVARBINARY}, #{x509Subject,jdbcType=LONGVARBINARY}, 
+      #{authenticationString,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, 
+    Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv, References_priv, 
+    Index_priv, Alter_priv, Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv, 
+    Execute_priv, Repl_slave_priv, Repl_client_priv, Create_view_priv, Show_view_priv, 
+    Create_routine_priv, Alter_routine_priv, Create_user_priv, Event_priv, Trigger_priv, 
+    Create_tablespace_priv, ssl_type, max_questions, max_updates, max_connections, max_user_connections, 
+    plugin, password_expired, password_last_changed, password_lifetime, account_locked, 
+    Create_role_priv, Drop_role_priv, Password_reuse_history, Password_reuse_time, ssl_cipher, 
+    x509_issuer, x509_subject, authentication_string
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (id, name, age
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, age
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (username, password, email, 
+      id, seller)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{seller,jdbcType=CHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select username, password, email, id, seller
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (Host, User, Select_priv, 
+      Insert_priv, Update_priv, Delete_priv, 
+      Create_priv, Drop_priv, Reload_priv, 
+      Shutdown_priv, Process_priv, File_priv, 
+      Grant_priv, References_priv, Index_priv, 
+      Alter_priv, Show_db_priv, Super_priv, 
+      Create_tmp_table_priv, Lock_tables_priv, Execute_priv, 
+      Repl_slave_priv, Repl_client_priv, Create_view_priv, 
+      Show_view_priv, Create_routine_priv, Alter_routine_priv, 
+      Create_user_priv, Event_priv, Trigger_priv, 
+      Create_tablespace_priv, ssl_type, max_questions, 
+      max_updates, max_connections, max_user_connections, 
+      plugin, password_expired, password_last_changed, 
+      password_lifetime, account_locked, Create_role_priv, 
+      Drop_role_priv, Password_reuse_history, Password_reuse_time, 
+      ssl_cipher, x509_issuer, x509_subject, 
+      authentication_string)
+    values (#{host,jdbcType=CHAR}, #{user,jdbcType=CHAR}, #{selectPriv,jdbcType=CHAR}, 
+      #{insertPriv,jdbcType=CHAR}, #{updatePriv,jdbcType=CHAR}, #{deletePriv,jdbcType=CHAR}, 
+      #{createPriv,jdbcType=CHAR}, #{dropPriv,jdbcType=CHAR}, #{reloadPriv,jdbcType=CHAR}, 
+      #{shutdownPriv,jdbcType=CHAR}, #{processPriv,jdbcType=CHAR}, #{filePriv,jdbcType=CHAR}, 
+      #{grantPriv,jdbcType=CHAR}, #{referencesPriv,jdbcType=CHAR}, #{indexPriv,jdbcType=CHAR}, 
+      #{alterPriv,jdbcType=CHAR}, #{showDbPriv,jdbcType=CHAR}, #{superPriv,jdbcType=CHAR}, 
+      #{createTmpTablePriv,jdbcType=CHAR}, #{lockTablesPriv,jdbcType=CHAR}, #{executePriv,jdbcType=CHAR}, 
+      #{replSlavePriv,jdbcType=CHAR}, #{replClientPriv,jdbcType=CHAR}, #{createViewPriv,jdbcType=CHAR}, 
+      #{showViewPriv,jdbcType=CHAR}, #{createRoutinePriv,jdbcType=CHAR}, #{alterRoutinePriv,jdbcType=CHAR}, 
+      #{createUserPriv,jdbcType=CHAR}, #{eventPriv,jdbcType=CHAR}, #{triggerPriv,jdbcType=CHAR}, 
+      #{createTablespacePriv,jdbcType=CHAR}, #{sslType,jdbcType=CHAR}, #{maxQuestions,jdbcType=INTEGER}, 
+      #{maxUpdates,jdbcType=INTEGER}, #{maxConnections,jdbcType=INTEGER}, #{maxUserConnections,jdbcType=INTEGER}, 
+      #{plugin,jdbcType=CHAR}, #{passwordExpired,jdbcType=CHAR}, #{passwordLastChanged,jdbcType=TIMESTAMP}, 
+      #{passwordLifetime,jdbcType=SMALLINT}, #{accountLocked,jdbcType=CHAR}, #{createRolePriv,jdbcType=CHAR}, 
+      #{dropRolePriv,jdbcType=CHAR}, #{passwordReuseHistory,jdbcType=SMALLINT}, #{passwordReuseTime,jdbcType=SMALLINT}, 
+      #{sslCipher,jdbcType=LONGVARBINARY}, #{x509Issuer,jdbcType=LONGVARBINARY}, #{x509Subject,jdbcType=LONGVARBINARY}, 
+      #{authenticationString,jdbcType=LONGVARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, 
+    Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv, References_priv, 
+    Index_priv, Alter_priv, Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv, 
+    Execute_priv, Repl_slave_priv, Repl_client_priv, Create_view_priv, Show_view_priv, 
+    Create_routine_priv, Alter_routine_priv, Create_user_priv, Event_priv, Trigger_priv, 
+    Create_tablespace_priv, ssl_type, max_questions, max_updates, max_connections, max_user_connections, 
+    plugin, password_expired, password_last_changed, password_lifetime, account_locked, 
+    Create_role_priv, Drop_role_priv, Password_reuse_history, Password_reuse_time, ssl_cipher, 
+    x509_issuer, x509_subject, authentication_string
+    from user
+  </select>
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.UserPO">
+    insert into user (id, name, age
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, age
+    from user
+  </select>
+
+</mapper>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap-theme.css">
+
+    <meta charset="UTF-8">
+    <title>商品详情</title>
+    <style>
+        .right span {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d22147;
+        }
+
+        .left {
+            width: 243px;
+            /*float:left;*/
+        }
+
+        .right {
+            float: right;
+            margin-top: 38px;
+        }
+
+        img {
+            width: 220px;
+        }
+
+        .right p {
+            height: 30px;
+        }
+
+        .right p:nth-of-type(1) {
+            font-size: 16px;
+        }
+
+        .right p:nth-of-type(3) {
+            color: #999;
+        }
+
+        .minus {
+            margin-left: 10px;
+            color: #333;
+        }
+
+        .productnum {
+            margin-left: 10px;
+        }
+
+        .add {
+            margin-left: 10px;
+        }
+
+        .bottom p:nth-of-type(1) {
+            font-size: 18px;
+            border-bottom: solid gray 1px;
+        }
+
+        /*.btn:hover{*/
+        /*border-color: #e4393c;*/
+        /*color:  #e4393c;*/
+        /*background-color: #ffffff;*/
+        /*}*/
+        .addcart,.editProduct {
+            line-height: 22px;
+            color: #fff;
+            background-color: #e31436;
+        }
+
+        .addcart:hover {
+            background-color: #f5345e;
+            color: #fff;
+        }
+
+        .addcart span {
+            color: #fff;
+            font-size: 16px;
+        }
+        .editProduct span {
+            color: #fff;
+            font-size: 16px;
+        }
+
+        #mycart {
+            position: fixed;
+            bottom: 50px;
+            right: 0px;
+            width: 155px;
+            height: 64px;
+            line-height: 55px;
+            text-align: center;
+            background-color: #e31436;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #mycartnum {
+            margin-left: 10px;
+        }
+
+        #msg {
+            position: fixed;
+            top: 300px;
+            right: 35px;
+            z-index: 10;
+            width: 1px;
+            height: 52px;
+            line-height: 52px;
+            font-size: 20px;
+            text-align: center;
+            color: #fff;
+            background: #e31436;
+            display: none
+        }
+
+
+    </style>
+</head>
+<body>
+<div th:insert="header::header"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-lg-10">
+            <!--<li th:if="${productHttpURL}==null">-->
+            <!--<img th:src="@{'/static/images/'+${product.url}}">-->
+            <!--</li>-->
+            <!--<li th:if="${productHttpURL}!=null">-->
+            <!--<img th:src="@{${productHttpURL}}">-->
+            <!--</li>-->
+            <img th:src="${productHttpURL}? ${productHttpURL} : @{'/static/images/'+${product.url}}">
+            <div class="right">
+                <p th:text="${product.name}"></p>
+                <p th:text="${product.introduce}"></p>
+                <!--<p th:text="'库存数量:'+${product.numbers}" class="stockNumber"></p>-->
+                <p>库存数量:  <span th:text="${product.numbers}" class="stockNumber"></span></p>
+                <p>￥<span th:text="${product.price}"></span></p>
+                <div th:if="${session.userType}==0">
+                    <p>购买数量：
+                        <span class="minus"><a href="javascript:void(0);">-</a></span>
+                        <span class="productnum">1</span>
+                        <span class="add"><a href="javascript:void(0);">+</a></span>
+                    </p>
+                    <a class="btn addcart" href="javascript:void(0);"><span>加入购物车</span></a>
+                </div>
+                <div th:if="${session.userType}==1">
+                    <a class="btn editProduct" th:href="@{'/publish/'+${product.id}}"><span>编辑商品</span></a>
+                </div>
+            </div>
+
+            <div id="msg">已成功加入购物车！</div>
+        </div>
+    </div>
+    <div class="bottom">
+        <p>详细信息</p>
+        <p th:text="${product.describe}"></p>
+    </div>
+    <!--<a id="mycart" class="btn" th:href="@{'/shoppingCart?number=0&productId='+${product.id}}">-->
+    <a id="mycart" class="btn" href="javascript:void(0)" th:if="${session.userType}==0">
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <span>购物车</span>
+        <span id="mycartnum" class="badge">0</span>
+    </a>
+</div>
+<div th:insert="footer::footer"></div>
+
+<script src="/static/jquery-1.12.4/jquery.js"></script>
+<srcipt src="/static/bootstrap-3.3.7/js/bootstrap.js"></srcipt>
+<script src="/static/jquery.fly.min.js"></script>
+<script>
+    var index = window.location.href.lastIndexOf("/");
+    // var productId=window.location.href.charAt(index+1);
+    // var productNum=0;
+    var data = {};
+    data.productId = window.location.href.substring(index + 1);
+    data.productNum = 0;
+
+    $(function () {
+        //增加产品数量的点击函数
+        $(".add").click(function () {
+            var productnum = parseInt($(".productnum").text());
+            if(productnum>=parseInt($(".stockNumber").text())){
+                alert("您要购买的数量超过了库存数量！");
+            }else{
+                $(".productnum").text(productnum + 1);
+            }
+
+        });
+
+        //减少产品数量的点击函数
+        $(".minus").click(function () {
+            var productnum = parseInt($(".productnum").text());
+            if ($(".productnum").text() > 0)
+                $(".productnum").text(productnum - 1);
+        });
+
+
+        //飞入购物车特效
+        var offset = $("#mycart").offset();
+        //添加购物车按钮的响应函数
+        $(".addcart").click(function (event) {
+            var addcart = $(this);
+            var img = addcart.parent().prev().attr("src");
+            var flyer = $('<img class="u-flyer" src="' + img + '">');
+            flyer.fly({
+                start: {
+                    left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed
+                    top: event.pageY //开始位置（必填）
+                },
+                end: {
+                    left: offset.left + 5, //结束位置（必填）
+                    top: offset.top + 5, //结束位置（必填）
+                    width: 0, //结束时宽度
+                    height: 0 //结束时高度
+                },
+                onEnd: function () { //结束回调
+                    $("#msg").show().animate({width: '250px'}, 200).fadeOut(1500); //提示信息
+                    // addcart.unbind('click');
+                    // this.destory(); //移除dom
+                }
+            });
+            //添加购物车
+            var $productnum = $(".productnum").text();
+            var $cartnum = $("#mycartnum").text();
+            $("#mycartnum").text(parseInt($productnum) + parseInt($cartnum));
+            //更新下购物车中的数目
+            data.productNum = parseInt($productnum) + parseInt($cartnum);
+
+            //应该使用post请求，不要使用get
+            // var $old_href = $("#mycart").attr("href");
+            // var $new_href = changeURLArg($old_href, 'number', $("#mycartnum").text());
+            // $("#mycart").attr("href", $new_href);
+        });
+
+        //点击购物车时，使用post方法将数据提交，并跳转到结算页面
+        $("#mycart").click(function () {
+            //选择的商品数量必须大于0
+            if (data.productNum > 0) {
+                $.ajax({
+                    url: "/shoppingCart",
+                    type: "post",
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    dataType: "text",
+                    timeout: 10000,
+                    success: function () {
+                        // console.log("success");
+                        window.location.href = "/shoppingCart/all";
+                    },
+                    error: function (msg) {
+                        if (msg == "user not login")
+                            window.location.href = "/login";
+                        // console.log("error");
+                    }
+                })
+            } else {
+                window.alert("商品数量必须大于0！");
+            }
+
+        });
+    });
+
+    /*
+    * url 目标url
+    * arg 需要替换的参数名称
+    * arg_val 替换后的参数的值
+    * return url 参数替换后的url
+    */
+    function changeURLArg(url, arg, arg_val) {
+        var pattern = arg + '=([^&]*)';
+        var replaceText = arg + '=' + arg_val;
+        if (url.match(pattern)) {
+            var tmp = '/(' + arg + '=)([^&]*)/gi';
+            tmp = url.replace(eval(tmp), replaceText);
+            return tmp;
+        } else {
+            if (url.match('[\?]')) {
+                return url + '&' + replaceText;
+            } else {
+                return url + '?' + replaceText;
+            }
+        }
+        return url + '\n' + arg + '\n' + arg_val;
+    }
+</script>
+</body>
+</html>

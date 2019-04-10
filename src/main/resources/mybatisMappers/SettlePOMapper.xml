@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netease.homework.mybatisGenerator.SettlePOMapper">
+  <insert id="insert" parameterType="com.netease.homework.mybatisGenerator.SettlePO">
+    insert into settle (id, user_id, product_id, 
+      number, gmt_create, gmt_modified, 
+      price)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
+      #{number,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{price,jdbcType=DECIMAL})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, product_id, number, gmt_create, gmt_modified, price
+    from settle
+  </select>
+</mapper>

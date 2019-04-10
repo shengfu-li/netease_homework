@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap-theme.css">
+    <script src="/static/jquery-1.12.4/jquery.js"></script>
+    <!--<srcipt src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></srcipt>-->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>发布</title>
+    <style>
+        input[type="file"] {
+            display: inline;
+        }
+
+        #productUpload {
+            display: none;
+        }
+
+        #productName, #productIntroduce, #productURL > input {
+            width: 70%;
+        }
+
+        #productNumber, #productPrice {
+            width: 15%;
+        }
+
+        form {
+            position: relative;
+        }
+
+        .img-rounded {
+            width: 190px;
+            height: 190px;
+            position: absolute;
+            right: 27px;
+            top: 27px;
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+<div th:insert="header::header"></div>
+
+<div class="container col-md-8 col-md-offset-2">
+    <h4 class="text-justify">内容发布</h4>
+    <!--该表单的action由jquery根据url来指定-->
+    <form method="post" enctype="multipart/form-data" role="form" data-toggle="validator" onsubmit="return on_submit()"
+          id="productForm">
+        <div class="form-group">
+            <label for="productName">标题</label>
+            <input type="text" class="form-control" id="productName" name="productName" placeholder="2-80字符"
+                   th:value="${product}!=null ? ${product.name}:''" required maxlength="40" minlength="2">
+            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+            <!--<div class="help-block with-errors">Hey look, this one has feedback icons!</div>-->
+        </div>
+        <div class="form-group">
+            <label for="productIntroduce">摘要</label>
+            <input type="text" class="form-control" id="productIntroduce" name="productIntroduce" placeholder="2-140字符"
+                   th:value="${product}!=null? ${product.introduce}:''" required maxlength="140" minlength="2">
+        </div>
+        <div class="form-group">
+            <label for="productIntroduce">商品图片</label>
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked="checked">图片地址
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">本地上传图片
+            </label>
+        </div>
+        <img alt="商品图片" class="img-rounded" th:src="${isHttpURL}==1? ${product.url}:'/static/images/'+${product.url}"
+             th:if="${product}">
+        <img alt="商品图片" class="img-rounded" th:if="${product}==null">
+        <div class="form-group has-feedback" id="productURL" >
+            <input type="url" class="form-control" name="productURL" placeholder="图片地址"
+                   th:value="${isHttpURL}==1 and ${product} ? ${product.url}:'' ">
+            <!--<div class="help-block with-errors">请输入正确的url地址，例如https://pop.nosdn.127.net/5a59f3bf-e936-4a21-885f-be008e2080a0?imageView&thumbnail=800x0&quality=85</div>-->
+        </div>
+        <div class="form-group" id="productUpload">
+            <input type="file" name="productUpload" accept="image/*">
+            <!--<button type="button" class="btn btn-default" >上传</button>-->
+        </div>
+        <div class="form-group">
+            <label for="productDescribe">商品详情</label>
+            <textarea class="form-control" rows="4" id="productDescribe" name="productDescribe" placeholder="2-1000字符"
+                      th:text="${product}!=null ? ${product.describe} :''" required maxlength="1000"
+                      minlength="2"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="productNumber">数量</label>
+            <input type="number" step="1" class="form-control" id="productNumber" name="productNumber"
+                   placeholder="输入整数" data-error="请输入整数" th:value="${product}!=null ? ${product.numbers}:''" required>
+            <div class="help-block with-errors"></div>
+        </div>
+        <div class="form-group">
+            <label for="productPrice">单个价格</label>
+            <input type="number" step="0.01" class="form-control" id="productPrice" name="productPrice"
+                   placeholder="0.00" th:value="${product}!=null ?${product.price}:''" required>
+        </div>
+        <button type="submit" class="btn btn-danger">发布</button>
+    </form>
+
+    <!--<div>-->
+    <!--<ul>-->
+    <!--<li th:each="file : ${files}">-->
+    <!--<a th:href="${file}" th:text="${file}" />-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+
+    <!--<script src="/static/jquery-1.12.4/jquery.js"></script>-->
+    <!--<srcipt src="/static/bootstrap-3.3.7/js/bootstrap.js"></srcipt>-->
+    <script src="/static/bootstrap-3.3.7/js/validator.js"></script>
+    <script>
+        $(function () {
+            //radio1的点击事件
+            $('#inlineRadio1').click(function () {
+                if ($(this).prop("checked") == true) {
+                    $("#productURL").css("display", "block");
+                    $('#productUpload').css("display", "none");
+                }
+
+            });
+            //radio2的点击事件
+            $('#inlineRadio2').click(function () {
+                if ($(this).prop("checked") == true) {
+                    $("#productURL").css("display", "none");
+                    $('#productUpload').css("display", "block");
+                }
+
+            });
+            //本地图片预览功能
+            $("#productUpload>input").change(function () {
+                //判断图片大小不能超过1MB
+                var file = $("#productUpload>input").get(0).files[0];
+                var maxAllowedSize = 1000000;
+                if (file.size >= maxAllowedSize) {
+                    alert("图片大小不能超过1MB!")
+                    return;
+                }
+
+                // console.log($(this));
+                var file = $(this).get(0).files[0];
+                var src = window.URL.createObjectURL(file);
+                $(".img-rounded").attr("src", src);
+
+
+
+            });
+
+            //网络图片的预览功能
+            $("#productURL>input").change(function () {
+                var src = $(this).val();
+                $(".img-rounded").attr("src", src);
+            });
+
+            //根据当前的url来指定form的action属性，
+            //如果是新增一个商品，url为/publish/add，此时的action为/publish/add
+            //如果是更新一个商品，url为/publish/{id},此时的action为/publish/{id}
+            $("form").attr("action", window.pathname);
+
+
+            // $("#productForm").submit(function (event) {
+            //     var file = $("#productUpload>input").get(0).files[0];
+            //     var maxAllowedSize = 1000000;
+            //     if (file.size < maxAllowedSize) {
+            //         event.preventDefault();
+            //         // return;
+            //     } else {
+            //         alert("图片大小不能超过1MB!")
+            //         // event.preventDefault();
+            //     }
+            // });
+
+
+        });
+    </script>
+</body>
+</html>

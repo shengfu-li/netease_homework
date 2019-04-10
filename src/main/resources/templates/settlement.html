@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap-theme.css">
+    <script src="/static/jquery-1.12.4/jquery.js"></script>
+    <!--<srcipt src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></srcipt>-->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>结算</title>
+    <style>
+        img {
+            width: 60px;
+            height: 60px;
+        }
+
+        tbody > tr > td {
+            vertical-align: middle !important;
+        }
+
+        #totalPrice {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d22147;
+        }
+    </style>
+</head>
+<body>
+<div th:insert="header::header"></div>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>产品图片</th>
+            <th>产品名称</th>
+            <th>购买时间</th>
+            <th>购买数量</th>
+            <th>购买价格</th>
+        </tr>
+        </thead>
+        <body>
+        <tr th:each="settleCustom : ${settlePOCustomList}">
+            <td><img th:src="${settleCustom.imageHttpURL} ? ${settleCustom.imageHttpURL} : @{'/static/images/'+${settleCustom.imageURL}}"></td>
+            <!--<td><img th:src="@{settleCustom.imageHttpURL} "></td>-->
+            <td th:text="${settleCustom.productName}"></td>
+            <td th:text="${settleCustom.dateTime}"></td>
+            <td class="number" th:text="${settleCustom.settlePO.number}"></td>
+            <td class="price" th:text="${settleCustom.settlePO.price}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>总计￥<span id="totalPrice">0</span></td>
+        </tr>
+        </body>
+    </table>
+</div>
+<!--<div th:insert="footer::footer"></div>-->
+
+<script src="/static/jquery-1.12.4/jquery.js"></script>
+<srcipt src="/static/bootstrap-3.3.7/js/bootstrap.js"></srcipt>
+<script>
+    $(function () {
+        var $price = $(".price");
+        var $number = $(".number");
+        var priceArray = [], numberArray = [];
+        $price.each(function () {
+            priceArray.push(parseFloat($(this).text()));
+        });
+        $number.each(function () {
+            numberArray.push(parseFloat($(this).text()));
+        });
+        var totalPrice = 0;
+        console.log(priceArray);
+        console.log(numberArray);
+        for (index = 0; index < numberArray.length; index++) {
+            totalPrice = totalPrice + numberArray[index] * priceArray[index];
+            // console.log(priceArray[index]);
+            // console.log(numberArray[index]);
+            // console.log(totalPrice);
+        }
+        console.log(totalPrice);
+        $("#totalPrice").text(totalPrice);
+
+    });
+</script>
+</body>
+</html>

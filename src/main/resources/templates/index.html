@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap-theme.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script src="static/jquery-1.12.4/jquery.js"></script>-->
+    <!--<srcipt src="/static/bootstrap-3.3.7/js/bootstrap.js"></srcipt>-->
+    <title>首页</title>
+    <style>
+        /*.container .row:after{*/
+            /*display: block;*/
+            /*clear: both;*/
+            /*content: "";*/
+        /*}*/
+        .col-md-3{
+            float:none;
+            display:inline-block;
+            width: 24%;
+        }
+        .product img{
+            /*height: 80%;*/
+            /*width: 80%;*/
+            height: 220px;
+            width: 220px;
+        }
+        .product{
+            border: 1px solid black;
+            margin-top: 5px;
+            text-align:center;
+            position: relative;
+        }
+        .price span{
+            font-size: 20px;
+            font-weight: bold;
+            color: #d22147;
+        }
+        .had{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 0;
+            width: 0;
+            border-style: solid;
+            border-width: 22px;
+            border-color: #aaa transparent transparent #aaa;
+            border-top-left-radius: 2px;
+        }
+        .had b {
+            position: absolute;
+            top: -12px;
+            left: -25px;
+            width: 40px;
+            text-align: center;
+            white-space: nowrap;
+            line-height: 14px;
+            font-size: 12px;
+            transform: rotate(-45deg);
+            color: #eee;
+        }
+        .product .deleteProduct{
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div th:insert="header::header"></div>
+    <!--<p th:text="${session.username}"></p>-->
+    <!--<p th:text="${session.userType}"></p>-->
+    <div class="container">
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active " ><a href="#allProducts" data-toggle="tab">全部商品</a></li>
+                <li role="presentation" th:if="${session.userType}==0"><a href="#productsNotBuy" data-toggle="tab">未购买商品</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container tab-content">
+        <!--所有商品-->
+        <div class="row tab-pane fade in active " id="allProducts">
+            <div class="col-xs-3 col-md-3 col-lg-3 product " th:each="product,stats : ${products}">
+                <a th:href="@{'/product/'+${product.productPO.id}}">
+                    <img th:src="(${#strings.contains(product.productPO.url,'http://')} or ${#strings.contains(product.productPO.url,'https://')})? @{${product.productPO.url}} : @{'/static/images/'+${product.productPO.url}}">
+                </a>
+                <!--使用左上角小图标来表示商品是否已经购买或者售出-->
+                <!--因为只有一个买家和卖家，所以买家一旦购买，代表卖家已售出-->
+                <span class="had" th:if="${product.hasBought}=='1' and ${session.userType}=='0'"><b>已购买</b></span>
+                <span class="had" th:if="${product.hasBought}=='1' and ${session.userType}=='1'"><b>已售出</b></span>
+                <p th:text="${product.productPO.name}"></p>
+                <p th:text="${product.productPO.introduce}"></p>
+                <p class="price" >￥<span th:text="${product.productPO.price}"></span></p>
+                <a class="btn btn-sm btn-danger deleteProduct" th:if="${product.hasBought}=='0' and ${session.userType}=='1'">删除</a>
+            </div>
+        </div>
+        <!--买家未购买的商品-->
+        <div class="row tab-pane fade" id="productsNotBuy" th:if="${session.userType}==0">
+            <div class="col-xs-3 col-md-3 col-lg-3 product" th:each="product:${productsNotBuy}">
+                <a th:href="@{'/product/'+${product.id}}">
+                    <img th:src="(${#strings.contains(product.url,'http://')} or ${#strings.contains(product.url,'https://')})? @{${product.url}} : @{'/static/images/'+${product.url}}">
+                </a>
+                <p th:text="${product.name}"></p>
+                <p th:text="${product.introduce}"></p>
+                <p class="price" >￥<span th:text="${product.price}"></span></p>
+            </div>
+        </div >
+    </div>
+    <!--<tr th:each="product,stat : ${products}">-->
+        <!--<td th:text="${product.describe}"> </td>-->
+        <!--<td th:text="${stat.index}"> </td>-->
+    <!--</tr>-->
+
+    <!--<div class="container">-->
+        <!--<ul >-->
+            <!--<li th:each="product,stats : ${products}">-->
+                <!--<img th:src="@{'/static/images/'+${product.url}}">-->
+                <!--<p th:text="${product.name}"></p>-->
+                <!--<p th:text="${product.introduce}"></p>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+
+    <!--<div th:insert="footer::footer"></div>-->
+    <div>
+        <p></p>
+    </div>
+<script>
+    $(function () {
+        $(".deleteProduct").click(function () {
+            var url=$(this).siblings("a").attr("href");
+            var $domToRemove=$(this).parent();
+            if(window.confirm("确定删除吗？")==true){
+                $.ajax({
+                   url:url,
+                   contentType:"application/json",
+                   dataType:"text",
+                   type:"delete",
+                   success:function (msg) {
+                       //删除对应的dom元素
+                       $domToRemove.remove();
+                       console.log(msg);
+                   },
+                   error:function (msg) {
+                       console.log(msg);
+                   }
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

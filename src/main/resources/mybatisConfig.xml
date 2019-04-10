@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 别名 -->
+    <typeAliases>
+        <package name="com.netease.homework.repository"/>
+    </typeAliases>
+    <!-- 数据库环境 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/homework?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;useSSL=FALSE"/>
+                <property name="username" value="root"/>
+                <property name="password" value="907175"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 映射文件 -->
+    <mappers>
+        <mapper resource="mappers/UserPOMapper.xml"/>
+        <mapper resource="mappers/ProductPOMapper.xml"/>
+        <mapper resource="mappers/CartPOMapper.xml"/>
+        <mapper resource="mappers/SettlePOMapper.xml"/>
+    </mappers>
+
+</configuration>
+

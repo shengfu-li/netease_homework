@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.netease.homework.repository.CartPOMapper">
+    <!--type指的是ResultMap最终映射的Java对象-->
+  <resultMap id="cartResultMap" type="CartPO">
+      <!--id是查询结果集中的唯一标识-->
+      <id column="id" property="id"></id>
+      <result column="user_id" property="userId"></result>
+      <result column="product_id" property="productId"></result>
+      <result column="product_name" property="productName"></result>
+  </resultMap>
+
+
+  <insert id="insert" parameterType="CartPO">
+    insert into cart (id, user_id, product_id,
+      `number`, product_name, price
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER},
+      #{number,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}
+      )
+  </insert>
+
+  <delete id="deleteById" parameterType="Integer">
+    delete from cart where id=#{id}
+  </delete>
+
+  <delete id="deleteByUserIdAndProductId">
+      delete from cart where user_id=#{userId} and product_id=#{productId}
+  </delete>
+
+  <update id="updateById" >
+    update cart set `number`=#{number} where id=#{id}
+  </update>
+
+  <select id="selectAll" resultMap="cartResultMap">
+    select id, user_id, product_id, `number`, product_name, price
+    from cart
+  </select>
+
+  <select id="selectByUserId" parameterType="Integer" resultMap="cartResultMap">
+    select * from cart where user_id=#{userId}
+  </select>
+
+  <select id="selectByUserIdAndProductId" resultMap="cartResultMap">
+--   这里需要判断userId以及productId为空的情况！
+    select id, user_id, product_id, `number`, product_name, price from cart where user_id=#{userId} and product_id=#{productId}
+--     select * from cart
+  </select>
+
+  <select id="selectById" parameterType="Integer" resultMap="cartResultMap">
+    select * from cart where id=#{id}
+  </select>
+
+
+</mapper>

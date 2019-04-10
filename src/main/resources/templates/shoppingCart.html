@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap-theme.css">
+    <script src="/static/jquery-1.12.4/jquery.js"></script>
+    <!--<srcipt src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></srcipt>-->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>购物车</title>
+    <style>
+        .singledelete {
+            color: #333;
+        }
+
+        .singledelete:hover {
+            text-decoration: none;
+        }
+
+        .batchdelete {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .batchdelete:hover {
+            text-decoration: none;
+        }
+
+        .batchdelete:visited {
+            text-decoration: none;
+        }
+
+        .bottom-bar {
+            position: absolute;
+            bottom: 10px;
+            left: 190px;
+            background-color: #f8f8f8;
+            height: 50px;
+        }
+
+        .rt, .lf, .allgoods, .allmoney, .gobuy {
+            float: left;
+
+        }
+
+        .lf {
+            margin-top: 15px;
+        }
+
+        .lf > label {
+            padding-left: 15px;
+        }
+
+        .lf > input, .lf > span, .lf > a {
+            padding-left: 50px;
+        }
+
+        .rt {
+            margin-top: 18px;
+        }
+
+        #selectAll, #selectAll ~ {
+            margin-right: 10px;
+        }
+
+        .rt {
+            margin-left: 550px;
+        }
+
+        .num {
+            color: #e31436;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .gobuy {
+            width: 100px;
+            margin-top: -18px;
+            line-height: 51px;
+            text-align: center;
+            background-color: #e31436;
+            color: #fff;
+            font-size: 18px;
+            position: relative;
+            left: 88px;
+        }
+
+        .gobuy:hover {
+            background-color: #f5345e;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .itm {
+            padding-left: 40px;
+        }
+    </style>
+</head>
+<body>
+<div th:insert="header::header"></div>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                产品编号
+            </th>
+            <th>
+                产品信息
+            </th>
+            <th>
+                单价（元）
+            </th>
+            <th>
+                数量
+            </th>
+            <th>
+                金额（元）
+            </th>
+            <th>
+                操作
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cart : ${cartList}">
+            <td class="selected"><input type="checkbox"></td>
+            <td class="productId" th:text="${cart.productId}">
+
+            </td>
+            <td class="productName" th:text="${cart.productName}">
+
+            </td>
+            <td class="price" th:text="${cart.price}">
+
+            </td>
+            <td class="number" th:text="${cart.number}">
+
+            </td>
+            <td class="totalprice" th:text="${cart.number}*${cart.price}">
+
+            </td>
+            <td>
+                <!--<a href="#" class="singledelete" data-toggle="modal" data-target=".bs-example-modal-sm">删除</a>-->
+                <a href="javascript:void(0)" class="singledelete">删除</a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div id="totalbar" class="bottom-bar container">
+    <div class="ttbar">
+        <div class="lf">
+            <!--<input type="checkbox" id="selectAll" name="selectAll"><label class="lab" for="selectAll">全选</label> <a href="#" class="batchdelete" data-toggle="modal" data-target=".bs-example-modal-sm">删除选中产品</a>&lt;!&ndash;Regular if234&ndash;&gt;-->
+            <input type="checkbox" id="selectAll" name="selectAll"><label class="lab" for="selectAll">全选</label> <a
+                href="javascript:void(0)" class="batchdelete">删除选中产品</a><!--Regular if234-->
+        </div>
+        <div class="rt">
+            <p class="allgoods">已选商品 <span class="num">0</span> 件 <span class="itm">总价：<span
+                    class="num">0.00</span></span></p>
+            <a class="gobuy " href="javascript:void(0)">去结算</a>
+        </div>
+    </div>
+</div>
+
+<script src="/static/jquery-1.12.4/jquery.js"></script>
+<script>
+    $(function () {
+
+        //全选按钮的事件响应函数
+        $("#selectAll").click(function () {
+            $(".table input[type=checkbox]").prop("checked", this.checked);
+            var checkboxNum = $(".table input[type=checkbox]").length;
+            if ($("#selectAll").prop("checked") == true) {
+                $(".allgoods>.num").text(checkboxNum);
+
+            } else {
+                $(".allgoods>.num").text(0);
+            }
+
+            $(".selected>input[type=checkbox]").each(function () {
+                var singleProductPrice = $(this).parent().siblings(".totalprice").text();
+                var totalPrice = $(".itm>.num").text();
+                var totalNum = $(".allgoods>.num").text();
+                if ($(this).prop("checked") == true) {
+                    $(".itm>.num").text((parseFloat(totalPrice) + parseFloat(singleProductPrice)).toFixed(2));
+                    $(".allgoods>.num").text(parseInt(totalNum));
+                } else {
+                    $(".itm>.num").text((parseFloat(totalPrice) - parseFloat(singleProductPrice)).toFixed(2));
+                    $(".allgoods>.num").text(0);
+
+                }
+
+            });
+
+        });
+
+        //批量删除的事件响应函数
+        $(".batchdelete").click(function () {
+            if (window.confirm("确定删除吗？") == true) {//点击了确定键
+                //向后端发送ajax请求，真正删除数据
+                var $productsId = $("table input[type=checkbox]:checked").parent().siblings(".productId");
+                // console.log($productsId);
+                var data = {};
+                data.productsId = [];
+                $productsId.each(function () {
+                    data.productsId.push($(this).text());
+                });
+                console.log(data);
+                $.ajax({
+                    url: "/shoppingCart",
+                    type: "delete",
+                    contentType: "application/json",
+                    dataType: "text",
+                    data: JSON.stringify(data),
+                    success: function (msg) {
+                        // console.log(msg);
+                        $("table input[type=checkbox]:checked").parent().remove();
+                        window.onload(true);
+                    },
+                    error: function (msg) {
+                        console.log(msg)
+                    }
+                })
+
+            }
+        });
+
+        //单个删除的事件响应函数
+        $(".singledelete").click(function () {
+            var checkedBox = $(this).parent().siblings(".selected");
+            if (window.confirm("确定删除吗？") == true && checkedBox.children().prop("checked") == true) {//点击了确定键
+                //向后台发送ajax请求，真正删除数据
+                var productsId = $(this).parent().siblings(".productId").text();
+                $.ajax({
+                    url: "/shoppingCart",
+                    data: JSON.stringify({
+                        "productsId": [productsId]
+                    }),
+                    type: "delete",
+                    //ajax发送给服务端的数据格式
+                    contentType: 'application/json;charset=utf-8',
+                    //从服务端接受的数据格式
+                    dataType: "text",
+                    headers: {
+                        "Pragma": "no-cache",
+                        "Expires": -1,
+                        "Cache-Control": "no-cache"
+                    },
+                    success: function (msg) {
+                        // console.log("success!");
+                        console.log(msg);
+                        //删除对应的dom元素
+                        checkedBox.parent().remove();
+                        location.reload(true);
+
+                    },
+                    error: function (msg) {
+                        // console.log("error!");
+                        console.log(msg);
+                    }
+                });
+
+            }
+        });
+
+        //单个checkbox的响应函数
+        $(".selected>input[type=checkbox]").click(function () {
+            var singleProductPrice = $(this).parent().siblings(".totalprice").text();
+            var totalPrice = $(".itm>.num").text();
+            var totalNum = $(".allgoods>.num").text();
+            if ($(this).prop("checked") == true) {
+                $(".itm>.num").text((parseFloat(totalPrice) + parseFloat(singleProductPrice)).toFixed(2));
+                $(".allgoods>.num").text(parseInt(totalNum) + 1);
+            } else {
+                $(".itm>.num").text((parseFloat(totalPrice) - parseFloat(singleProductPrice)).toFixed(2));
+                $(".allgoods>.num").text(parseInt(totalNum) - 1);
+            }
+        });
+
+        //结算按钮的响应函数
+        $(".gobuy").click(function () {
+            if (window.confirm("确定购买吗？") == true) {
+                //向后端发送ajax请求，结算购买的产品
+                var productsId = $("table input[type=checkbox]:checked").parent().siblings(".productId");
+                var productsNum = $("table input[type=checkbox]:checked").parent().siblings(".number");
+                // console.log(productsId);
+                // console.log(productsNum);
+                var productIdArray = [], productNumArray = [];
+                productsId.each(function () {
+                    productIdArray.push($(this).text());
+                });
+                productsNum.each(function () {
+                    productNumArray.push($(this).text());
+                });
+                // console.log(productIdArray);
+                // console.log(productNumArray);
+
+                $.ajax({
+                    url: "/settle/add",
+                    type: "post",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "text",
+                    data: JSON.stringify({
+                        "productsId": productIdArray,
+                        "productsNum": productNumArray
+                    }),
+                    success: function (msg) {
+                        // window.alert("购买成功！")
+                        console.log(msg);
+                        window.location.href = "/settle/all";
+                    },
+                    error: function (msg) {
+                        console.log(msg)
+                    }
+                });
+
+            }
+        });
+    });
+</script>
+</body>
+</html>
